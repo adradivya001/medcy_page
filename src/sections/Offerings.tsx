@@ -42,13 +42,7 @@ const Offerings = () => {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px" }}
-          transition={{ duration: 0.2 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#0f3d32]/60 mb-5 bg-[#0f3d32]/5 border border-[#0f3d32]/10 px-4 py-1.5 rounded-full">
             Offerings
           </span>
@@ -58,26 +52,19 @@ const Offerings = () => {
           >
             Our Offerings
           </h2>
-        </motion.div>
+        </div>
  
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {offerings.map((offering, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 5 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px" }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 25px 50px rgba(15, 61, 50, 0.18)",
                 borderColor: "rgba(15, 61, 50, 0.2)",
               }}
-              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white border border-[#0f3d32]/5 transition-all duration-400 cursor-default"
-              style={{
-                boxShadow: '0 4px 20px rgba(15, 61, 50, 0.04)',
-              }}
+              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white border border-[#0f3d32]/5 transition-all duration-300 cursor-default shadow-[0_4px_20px_rgba(15,61,50,0.04)]"
             >
               {/* Icon container */}
               <div
@@ -89,19 +76,19 @@ const Offerings = () => {
               >
                 {offering.icon}
               </div>
-
+ 
               {/* Text */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-lg font-semibold text-[#0f3d32] leading-snug tracking-tight">
+                <h3 className="text-xl font-bold text-[#0f3d32] leading-snug tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {offering.headline}
                 </h3>
-                <p className="text-sm text-[#2a6a5a] leading-relaxed font-light">
+                <p className="text-base text-[#1a3d36] leading-relaxed font-medium opacity-90">
                   {offering.description}
                 </p>
               </div>
-
+ 
               {/* Bottom accent line */}
-              <div className="mt-auto h-0.5 w-0 group-hover:w-16 bg-[#0f3d32]/20 transition-all duration-500 ease-out rounded-full" />
+              <div className="mt-auto h-0.5 w-0 group-hover:w-16 bg-[#0f3d32]/40 transition-all duration-500 ease-out rounded-full" />
             </motion.div>
           ))}
         </div>
