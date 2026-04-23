@@ -68,16 +68,16 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         animate={{ height: isFlipped ? 480 : 280 }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
-      className="perspective-1000 w-full group outline-none select-none overflow-visible"
-      style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
-    >
-      <motion.div
-        initial={false}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
-        className="relative w-full h-full preserve-3d"
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="perspective-1000 w-full group outline-none select-none overflow-visible"
+        style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
       >
+        <motion.div
+          initial={false}
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full h-full preserve-3d"
+        >
         {/* Front Face */}
         <div className={`absolute inset-0 backface-hidden rounded-[24px] overflow-hidden bg-[#CFE8E5] border border-[#0f3d32]/5 flex flex-col items-center justify-center ${brand.frontImage ? 'p-0' : 'p-6 shadow-lg'}`}>
           {brand.frontImage ? (
@@ -146,16 +146,16 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
             >
               {brand.name}
             </h3>
-            <p className="text-[#0f3d32]/80 text-sm font-semibold mb-6 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
+            <p className="text-[#0f3d32]/90 text-[15px] font-semibold mb-5 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
 
-            <div className="text-[#0f3d32]/90 text-[13px] leading-relaxed mb-6 space-y-4 font-normal overflow-y-auto custom-scrollbar pr-2">
+            <div className="text-[#0f3d32] text-[14.5px] leading-relaxed mb-6 space-y-4 font-medium overflow-y-auto custom-scrollbar pr-2">
               {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
             </div>
 
-            <ul className="space-y-2.5 mt-auto pt-4 border-t border-[#0f3d32]/5">
+            <ul className="space-y-3 mt-auto pt-4 border-t border-[#0f3d32]/10">
               {brand.highlights.map((h, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-xs text-[#0f3d32]/80 font-medium leading-tight">
-                  <span className="text-[#4ABFB0] text-[10px] mt-0.5">●</span>
+                <li key={i} className="flex items-start gap-2.5 text-[13.5px] text-[#0f3d32] font-semibold leading-snug">
+                  <span className="text-[#4ABFB0] text-[11px] mt-0.5">●</span>
                   {h}
                 </li>
               ))}
