@@ -27,7 +27,7 @@ const Footer = () => (
         <motion.div 
           animate={{ opacity: [1, 0.4, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-8 h-8 flex items-center justify-center"
+          className="relative w-12 h-12 flex items-center justify-center"
         >
           <TransparentLogo src="/medcy_logo.png" alt="Medcy Logo" className="w-full h-full object-contain" />
         </motion.div>

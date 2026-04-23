@@ -85,7 +85,7 @@ export default function MedcyIvfHero() {
                         variants={staggerVariants}
                         whileHover={{ scale: 1.03 }}
                         onClick={() => navigate('/contact')}
-                        className="flex items-center gap-3 px-8 py-4 rounded-full bg-[#0f3d32] text-white font-medium text-lg shadow-[0_8px_20px_rgba(15,61,50,0.2)] transition-transform duration-300"
+                        className="flex items-center gap-3 px-8 py-4 rounded-full bg-[#0f3d32] text-white font-medium text-lg shadow-[0_15px_30px_rgba(15,61,50,0.35)] transition-transform duration-300"
                     >
                         Request Callback <ArrowRight className="w-5 h-5" />
                     </motion.button>

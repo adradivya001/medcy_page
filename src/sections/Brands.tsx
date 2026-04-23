@@ -130,7 +130,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
         {!isExpandedMobile && (
           <button
             onClick={() => setIsExpandedMobile(true)}
-            className="md:hidden absolute bottom-6 right-6 w-12 h-12 bg-white/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-xl z-10 active:scale-95 transition-transform"
+            className="md:hidden absolute bottom-6 right-6 w-12 h-12 bg-white/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-[0_12px_24px_rgba(15,61,50,0.3)] z-10 active:scale-95 transition-transform"
           >
             <span className="text-2xl font-light text-[#0f3d32]">+</span>
           </button>

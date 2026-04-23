@@ -195,7 +195,7 @@ const Contact = () => {
                       whileHover={{ scale: 1.02, backgroundColor: "#0f3d32" }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full mt-2 group flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#13443e] text-white text-sm font-semibold hover:bg-[#0f2822] transition-colors shadow-lg border border-white/5 disabled:opacity-70"
+                      className="w-full mt-2 group flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#13443e] text-white text-sm font-semibold hover:bg-[#0f2822] transition-colors shadow-[0_12px_24px_rgba(15,61,50,0.3)] border border-white/5 disabled:opacity-70"
                     >
                       {isSubmitting ? <Loader2 className="animate-spin w-5 h-5" /> : "Request Callback"}
                     </motion.button>
