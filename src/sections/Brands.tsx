@@ -47,18 +47,23 @@ const brands = [
   }
 ];
 
-const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number }) => {
+const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
   const [isFlippedMobile, setIsFlippedMobile] = useState(false);
   const [isHoveredDesktop, setIsHoveredDesktop] = useState(false);
 
   const isFlipped = isFlippedMobile || isHoveredDesktop;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      animate={{ height: isFlipped ? 480 : 280 }}
+    <div 
+      className="w-full"
+      onMouseEnter={() => setIsHoveredDesktop(true)}
+      onMouseLeave={() => setIsHoveredDesktop(false)}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        animate={{ height: isFlipped ? 480 : 280 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
       className="perspective-1000 w-full group outline-none select-none overflow-visible"
       style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
@@ -68,12 +73,6 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
         className="relative w-full h-full preserve-3d"
-        onPointerEnter={(e) => {
-          if (e.pointerType === 'mouse') setIsHoveredDesktop(true);
-        }}
-        onPointerLeave={(e) => {
-          if (e.pointerType === 'mouse') setIsHoveredDesktop(false);
-        }}
       >
         {/* Front Face */}
         <div className={`absolute inset-0 backface-hidden rounded-[24px] overflow-hidden bg-[#CFE8E5] border border-[#0f3d32]/5 flex flex-col items-center justify-center ${brand.frontImage ? 'p-0' : 'p-6 shadow-lg'}`}>
@@ -164,6 +163,7 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
         </div>
       </motion.div>
     </motion.div>
+  </div>
   );
 };
 
@@ -185,7 +185,7 @@ const Brands = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto items-center">
           {brands.map((brand, index) => (
-            <BrandCard key={index} brand={brand} index={index} />
+            <BrandCard key={index} brand={brand} />
           ))}
         </div>
       </div>
