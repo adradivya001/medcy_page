@@ -84,12 +84,12 @@ const Navbar = () => {
               whileHover={{ 
                 scale: 1.03, 
                 boxShadow: "0 25px 50px rgba(15, 61, 50, 0.45)",
-                backgroundColor: "#0f2822" 
+                backgroundColor: "#08241e" 
               }}
               whileTap={{ scale: 0.97 }}
               onClick={() => navigate('/contact')}
               transition={{ duration: 0.4 }}
-              className="group hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#13443e] text-white text-sm font-semibold transition-all shadow-[0_15px_30px_rgba(15, 61, 50, 0.35)] whitespace-nowrap"
+              className="group hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0f3d32] text-white text-sm font-semibold transition-all shadow-[0_15px_30px_rgba(15, 61, 50, 0.35)] whitespace-nowrap"
             >
               Contact Us <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
             </motion.button>

@@ -62,12 +62,6 @@ export default function MedcyIvfHero() {
                     }}
                     className="flex flex-col items-center"
                 >
-                    {/* Badge */}
-                    <motion.div variants={staggerVariants} className="mb-6 px-4 py-1.5 rounded-full border border-[#0f3d32]/20 bg-white/30 backdrop-blur-sm text-[#0f3d32] text-sm font-semibold tracking-wide">
-                        • Medcy IVF
-                    </motion.div>
-
-                    {/* Headline */}
                     <motion.h1
                         variants={staggerVariants}
                         className="text-[42px] md:text-[64px] lg:text-[76px] leading-[1.1] md:leading-[1.15] mb-6 text-[#38423f] tracking-tight"
@@ -218,11 +212,11 @@ export default function MedcyIvfHero() {
                                                 </div>
 
                                                 <motion.button
-                                                    whileHover={{ scale: 1.02 }}
+                                                    whileHover={{ scale: 1.02, backgroundColor: '#08241e' }}
                                                     whileTap={{ scale: 0.98 }}
                                                     disabled={isSubmitting}
                                                     type="submit"
-                                                    className="w-full py-5 rounded-full bg-[#13443e] text-white font-bold text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-70 shadow-[0_8px_20px_rgba(0,0,0,0.2)] mt-2 border border-white/10"
+                                                    className="w-full py-5 rounded-full bg-[#0f3d32] text-white font-bold text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-70 shadow-[0_15px_30px_rgba(15, 61, 50, 0.35)] mt-2 border border-white/10"
                                                 >
                                                     {isSubmitting ? (
                                                         <Loader2 className="animate-spin" />
