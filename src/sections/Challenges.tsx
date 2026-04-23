@@ -62,7 +62,7 @@ const Challenges = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:w-[42%] flex-shrink-0 lg:sticky lg:top-28 self-start"
+            className="w-full lg:w-[42%] flex-shrink-0 lg:sticky lg:top-28 self-start"
           >
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#4ABFB0] mb-4 bg-[#4ABFB0]/10 px-4 py-1.5 rounded-full">
               Real Challenges
@@ -90,11 +90,10 @@ const Challenges = () => {
           </motion.div>
 
           {/* ── RIGHT: Auto-scrolling card stack ── */}
-          <div className="lg:w-[58%] relative">
+          <div className="w-full lg:w-[58%] relative">
             {/* Stacked card viewport — shows 1 prominent + peek of next */}
             <div
-              className="relative overflow-hidden"
-              style={{ height: '420px' }}
+              className="relative overflow-hidden h-[400px] md:h-[450px] lg:h-[420px]"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
