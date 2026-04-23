@@ -67,15 +67,14 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
-        animate={{ height: isFlipped ? 480 : 280 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full group outline-none select-none overflow-hidden rounded-[24px] shadow-xl border border-[#0f3d32]/5 bg-[#CFE8E5]"
+        transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+        className="relative w-full h-[400px] lg:h-[450px] group outline-none select-none overflow-hidden rounded-[24px] shadow-xl border border-[#0f3d32]/5 bg-[#CFE8E5]"
         style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
       >
         {/* Front Face */}
         <motion.div
           animate={{ opacity: isFlipped ? 0 : 1, scale: isFlipped ? 0.95 : 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className={`absolute inset-0 flex flex-col items-center justify-center ${brand.frontImage ? 'p-0' : 'p-6'}`}
           style={{ pointerEvents: isFlipped ? 'none' : 'auto' }}
         >
@@ -124,8 +123,8 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
 
         {/* Back Face */}
         <motion.div
-          animate={{ opacity: isFlipped ? 1 : 0, y: isFlipped ? 0 : 30 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: isFlipped ? 0.05 : 0 }}
+          animate={{ opacity: isFlipped ? 1 : 0, y: isFlipped ? 0 : 20 }}
+          transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
           className={`absolute inset-0 p-6 bg-white flex flex-col z-10`}
           style={{ pointerEvents: isFlipped ? 'auto' : 'none' }}
         >
