@@ -141,21 +141,21 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
 
             <div className="relative z-10 flex flex-col flex-1 mt-6 md:mt-0">
               <h3
-                className="text-2xl font-semibold mb-1 text-[#0f3d32] tracking-wider"
+                className="text-2xl font-bold mb-1 text-[#0f3d32] tracking-wider"
                 style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 2px 10px rgba(15, 61, 50, 0.05)' }}
               >
                 {brand.name}
               </h3>
-              <p className="text-[#0f3d32]/90 text-[15px] font-medium mb-5 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
+              <p className="text-[#0f3d32] text-[16px] font-semibold mb-5 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
 
-              <div className="text-[#0f3d32] text-[14px] leading-relaxed mb-6 space-y-4 font-normal overflow-y-auto custom-scrollbar pr-2">
+              <div className="text-[#08241e] text-[15.5px] leading-relaxed mb-6 space-y-4 font-medium overflow-y-auto custom-scrollbar pr-2">
                 {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
               </div>
 
-              <ul className="space-y-3 mt-auto pt-4 border-t border-[#0f3d32]/10">
+              <ul className="space-y-3 mt-auto pt-4 border-t border-[#0f3d32]/20">
                 {brand.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-[13.5px] text-[#0f3d32] font-medium leading-snug">
-                    <span className="text-[#4ABFB0] text-[11px] mt-0.5">●</span>
+                  <li key={i} className="flex items-start gap-2.5 text-[14.5px] text-[#08241e] font-semibold leading-snug">
+                    <span className="text-[#4ABFB0] text-[12px] mt-0.5">●</span>
                     {h}
                   </li>
                 ))}
