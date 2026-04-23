@@ -8,7 +8,6 @@ import Challenges from './sections/Challenges';
 import Offerings from './sections/Offerings';
 import WhyUs from './sections/WhyUs';
 import Founders from './sections/Founders';
-import TransparentLogo from './components/ui/TransparentLogo';
 import Contact from './pages/Contact';
 import Preloader from './components/Preloader';
 
@@ -21,17 +20,14 @@ import FoundersPage from './pages/FoundersPage';
 import BackToTop from './components/BackToTop';
 
 const Footer = () => (
-  <footer className="py-12 border-t border-white/5 bg-background">
+  <footer className="pt-0 pb-6 border-t border-white/5 bg-background">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-      <div className="flex items-center gap-4">
-        <motion.div 
-          animate={{ opacity: [1, 0.4, 1] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-44 h-44 flex items-center justify-center"
-        >
-          <TransparentLogo src="/medcy_logo.png" alt="Medcy Logo" className="w-full h-full object-contain" />
-        </motion.div>
-        <span className="font-bold text-3xl text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>Medcy Health Tech</span>
+      <div className="flex items-center">
+        <img
+          src="/.png/Group 97.png"
+          alt="Medcy Logo"
+          className="h-12 md:h-16 w-auto object-contain"
+        />
       </div>
 
       <div className="flex gap-8 text-sm text-slate-500 font-medium">
@@ -81,7 +77,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

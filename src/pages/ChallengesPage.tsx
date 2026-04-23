@@ -20,23 +20,23 @@ const ChallengesPage = () => {
           </p>
         </motion.div>
       </div>
-      
+
       {/* The core Challenges section */}
       <Challenges />
-      
+
       {/* Extra informative content footer */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-6 pt-0 pb-16">
         <div className="bg-white/60 backdrop-blur-md rounded-[32px] p-10 md:p-16 border border-[#0f3d32]/5 shadow-sm text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-[#0f3d32] mb-6" 
+            className="text-3xl font-bold text-[#0f3d32] mb-6"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             From Overwhelmed to Optimized
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

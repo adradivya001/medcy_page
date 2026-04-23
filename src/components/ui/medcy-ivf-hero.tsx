@@ -49,11 +49,11 @@ export default function MedcyIvfHero() {
 
     return (
         <InteractiveBackground
-            className="min-h-[100dvh]"
+            className="min-h-0"
             exclusionArea={{ width: '900px', height: '450px' }}
         >
             {/* Hero Centered Stack */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto w-full pt-32 pb-8 md:pt-40 md:pb-12">
+            <div className="relative z-10 flex flex-col items-center px-6 text-center max-w-4xl mx-auto w-full pt-32 pb-16 md:pt-40 md:pb-20">
                 <motion.div
                     initial="hidden"
                     animate="visible"
@@ -67,19 +67,19 @@ export default function MedcyIvfHero() {
                         className="text-[42px] md:text-[64px] lg:text-[76px] leading-[1.1] md:leading-[1.15] mb-6 text-[#38423f] tracking-tight"
                         style={{ fontFamily: "'Playfair Display', serif", fontWeight: 300 }}
                     >
-                        The Digital Heart of Your Practice. <br className="hidden md:block" /> The Human Touch for Your Patients.
+                        Smarter Operations for <br className="hidden md:block" /> Modern Clinics.
                     </motion.h1>
 
                     <motion.p variants={staggerVariants} className="text-[#5b6e68] text-base md:text-lg lg:text-[19px] max-w-[800px] font-normal leading-[1.7] mb-10 tracking-wide text-center">
-                        Medcy Health Tech is a Digital Front Office (DFO) service that offloads the weight of Sales, Services, and Marketing from your clinic. We replace administrative burden with Digital Twins—intelligent support that handles calls and communication so your team can focus entirely on patient care. Operating exclusively in the Pro-Active safe space, we help you grow your practice across the journey of Parenthood, Transformation, and Longevity without ever touching the complexity of backend operations.
+                        We streamline your patient journey—from first contact to follow-up—so you can deliver better care while improving operational efficiency.
                     </motion.p>
 
                     {/* Primary CTA */}
                     <motion.button
                         variants={staggerVariants}
-                        whileHover={{ 
-                          scale: 1.03,
-                          boxShadow: "0 30px 60px rgba(15, 61, 50, 0.45)"
+                        whileHover={{
+                            scale: 1.03,
+                            boxShadow: "0 30px 60px rgba(15, 61, 50, 0.45)"
                         }}
                         onClick={() => navigate('/contact')}
                         className="flex items-center gap-3 px-8 py-4 rounded-full bg-[#0f3d32] text-white font-medium text-lg shadow-[0_20px_40px_rgba(15,61,50,0.35)] transition-all duration-300"

@@ -26,26 +26,26 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         className="relative flex flex-col items-center"
       >
         <motion.div
-          animate={{ 
+          animate={{
             scale: [1, 1.05, 1],
             filter: ["drop-shadow(0px 0px 0px rgba(15,61,50,0))", "drop-shadow(0px 10px 20px rgba(15,61,50,0.2))", "drop-shadow(0px 0px 0px rgba(15,61,50,0))"]
           }}
-          transition={{ 
-            duration: 1.2, 
-            ease: "easeInOut" 
+          transition={{
+            duration: 1.2,
+            ease: "easeInOut"
           }}
           className="w-32 h-32 md:w-40 md:h-40 relative flex items-center justify-center"
         >
-          <img 
-            src="/.png/health tech logo (1).svg" 
-            alt="Medcy Logo" 
+          <img
+            src="/.png/health tech logo (1).svg"
+            alt="Medcy Logo"
             className="w-full h-full object-contain"
           />
         </motion.div>
-        
+
         {/* Sleek loading bar */}
         <div className="w-[180px] h-[2px] bg-[#0f3d32]/10 mt-8 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: "100%" }}
             transition={{ duration: 0.8, ease: "easeInOut", repeat: Infinity }}

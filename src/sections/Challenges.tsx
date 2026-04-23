@@ -52,7 +52,7 @@ const Challenges = () => {
   }, [isPaused, advance]);
 
   return (
-    <section id="challenges" className="py-24 relative overflow-hidden bg-[#CFE8E5]">
+    <section id="challenges" className="pt-0 pb-0 relative overflow-hidden bg-[#CFE8E5]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center min-h-[560px]">
 

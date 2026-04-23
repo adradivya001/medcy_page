@@ -38,11 +38,11 @@ const offerings = [
 
 const Offerings = () => {
   return (
-    <section id="offerings" className="py-28 relative overflow-hidden bg-[#CFE8E5]">
+    <section id="offerings" className="pt-0 pb-12 relative overflow-hidden bg-[#CFE8E5]">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -59,7 +59,7 @@ const Offerings = () => {
             Our Offerings
           </h2>
         </motion.div>
- 
+
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {offerings.map((offering, i) => (
@@ -86,7 +86,7 @@ const Offerings = () => {
               >
                 {offering.icon}
               </div>
- 
+
               {/* Text */}
               <div className="flex flex-col gap-3">
                 <h3 className="text-xl font-bold text-[#0f3d32] leading-snug tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -96,7 +96,7 @@ const Offerings = () => {
                   {offering.description}
                 </p>
               </div>
- 
+
               {/* Bottom accent line */}
               <div className="mt-auto h-0.5 w-0 group-hover:w-16 bg-[#0f3d32]/40 transition-all duration-500 ease-out rounded-full" />
             </motion.div>

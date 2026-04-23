@@ -69,7 +69,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-               <div className="p-6 rounded-2xl bg-[#0f3d32]/5 border border-[#0f3d32]/10">
+              <div className="p-6 rounded-2xl bg-[#0f3d32]/5 border border-[#0f3d32]/10">
                 {brand.icon}
               </div>
             </div>
@@ -85,7 +85,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
           className={`absolute inset-0 z-20 bg-white flex flex-col p-6 lg:p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isExpandedMobile ? 'translate-y-0' : 'translate-y-full md:group-hover:translate-y-0'}`}
         >
           {/* Mobile Close Button (Inside Panel) */}
-          <button 
+          <button
             className="md:hidden absolute top-6 right-6 p-2 bg-[#CFE8E5]/50 backdrop-blur-md rounded-full text-[#0f3d32] z-30 shadow-sm border border-[#0f3d32]/10"
             onClick={() => setIsExpandedMobile(false)}
           >
@@ -114,7 +114,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
               ))}
             </ul>
           </div>
-          
+
           {/* Decorative Gradient */}
           <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-5 pointer-events-none`} />
         </motion.div>
@@ -135,7 +135,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
 
 const Brands = () => {
   return (
-    <section id="our-brands" className="pt-4 pb-24 relative overflow-hidden bg-[#CFE8E5]">
+    <section id="our-brands" className="pt-4 pb-0 relative overflow-hidden bg-[#CFE8E5]">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#0f3d32]/60 mb-4 bg-[#0f3d32]/5 border border-[#0f3d32]/10 px-4 py-1.5 rounded-full">

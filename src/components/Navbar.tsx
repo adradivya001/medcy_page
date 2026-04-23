@@ -36,10 +36,10 @@ const Navbar = () => {
             width: isScrolled && !isHovered ? "min(750px, 90vw)" : "min(1200px, 95vw)",
             maxWidth: "1200px",
             padding: isScrolled && !isHovered ? "8px 8px 8px 16px" : "10px 10px 10px 20px",
-            backgroundColor: isScrolled ? "rgba(240, 250, 249, 0.45)" : "rgba(240, 250, 249, 0.3)",
-            backdropFilter: isScrolled ? "blur(16px)" : "blur(12px)",
-            boxShadow: isScrolled ? "0 10px 40px rgba(15, 61, 50, 0.08)" : "0 4px 20px rgba(0,0,0,0.05)",
-            border: isScrolled ? "1px solid rgba(255, 255, 255, 0.4)" : "1px solid rgba(255, 255, 255, 0.3)",
+            backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.98)" : "rgba(0, 0, 0, 0.95)",
+            backdropFilter: isScrolled ? "blur(30px)" : "blur(15px)",
+            boxShadow: isScrolled ? "0 10px 50px rgba(0, 0, 0, 0.5)" : "0 4px 30px rgba(0, 0, 0, 0.3)",
+            border: isScrolled ? "1px solid rgba(255, 255, 255, 0.25)" : "1px solid rgba(255, 255, 255, 0.2)",
           }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center justify-between rounded-[50px] pointer-events-auto shadow-sm"
@@ -51,7 +51,7 @@ const Navbar = () => {
               transition={{ duration: 0.4 }}
               className="flex items-center justify-center p-1"
             >
-              <img src="/.png/health tech logo (1).svg" alt="Medcy Logo" className="h-10 w-auto object-contain" />
+              <img src="/.png/Group 97.png" alt="Medcy Logo" className="h-12 w-auto object-contain" />
             </motion.div>
           </div>
 
@@ -68,9 +68,9 @@ const Navbar = () => {
                 {navLinks.map(link => {
                   const path = link === "Home" ? "/" : `/${link.toLowerCase().replace(/ /g, '-')}`;
                   return (
-                    <Link key={link} to={path} className="relative text-[#334b46] font-medium text-sm hover:text-[#0f3d32] transition-colors group pointer-events-auto">
+                    <Link key={link} to={path} className="relative text-white font-semibold text-sm hover:text-[#4ABFB0] transition-colors group pointer-events-auto tracking-wide">
                       {link}
-                      <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#0f3d32] transition-all duration-300 group-hover:w-full"></span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#4ABFB0] transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                   );
                 })}
@@ -81,10 +81,10 @@ const Navbar = () => {
           {/* Right Area: CTA & Hamburger */}
           <div className="flex items-center gap-2">
             <motion.button
-              whileHover={{ 
-                scale: 1.03, 
+              whileHover={{
+                scale: 1.03,
                 boxShadow: "0 25px 50px rgba(15, 61, 50, 0.45)",
-                backgroundColor: "#08241e" 
+                backgroundColor: "#08241e"
               }}
               whileTap={{ scale: 0.97 }}
               onClick={() => navigate('/contact')}
@@ -97,7 +97,7 @@ const Navbar = () => {
             {/* Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-3 rounded-full hover:bg-black/5 transition-colors text-[#13443e]"
+              className="lg:hidden p-3 rounded-full hover:bg-white/10 transition-colors text-white"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -113,7 +113,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[40] bg-white pt-32 px-10 lg:hidden"
+            className="fixed inset-0 z-[40] bg-black pt-32 px-10 lg:hidden"
           >
             <div className="flex flex-col gap-8">
               {navLinks.map((link, i) => {
@@ -128,7 +128,7 @@ const Navbar = () => {
                     <Link
                       to={path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-4xl font-light text-[#0f3d32] hover:text-[#4ABFB0] transition-colors"
+                      className="text-4xl font-light text-white hover:text-[#4ABFB0] transition-colors"
                       style={{ fontFamily: "'Playfair Display', serif" }}
                     >
                       {link}

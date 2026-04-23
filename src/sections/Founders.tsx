@@ -130,7 +130,7 @@ const Founders = () => {
     const [selectedFounder, setSelectedFounder] = useState<typeof founders[0] | null>(null);
 
     return (
-        <section id="our-founders" className="py-24 relative overflow-hidden bg-[#CFE8E5]">
+        <section id="our-founders" className="pt-0 pb-10 relative overflow-hidden bg-[#CFE8E5]">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-emerald/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -218,7 +218,7 @@ const Founders = () => {
                                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                     className="mb-8 flex justify-center"
                                 >
-                                    <img src="/.png/health tech logo (1).svg" alt="Medcy Logo" className="h-10 w-auto opacity-70" />
+                                    <img src="/.png/Group 97.png" alt="Medcy Logo" className="h-10 w-auto opacity-70" />
                                 </motion.div>
 
                                 <button

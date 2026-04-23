@@ -26,7 +26,7 @@ const whyUsPoints = [
 
 const WhyUs = () => {
     return (
-        <section id="why-us" className="py-24 bg-[#CFE8E5] relative overflow-hidden">
+        <section id="why-us" className="pt-12 pb-12 bg-[#CFE8E5] relative overflow-hidden">
             {/* Subtle background flair similar to other sections */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-emerald/5 blur-[120px] rounded-full pointer-events-none" />
 
