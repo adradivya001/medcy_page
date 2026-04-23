@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, X, CheckCircle2, Loader2 } from "lucide-react";
 import { submitLead } from "../../services/leadService";
 
 import InteractiveBackground from "./InteractiveBackground";
 
 export default function MedcyIvfHero() {
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -82,7 +84,7 @@ export default function MedcyIvfHero() {
                     <motion.button
                         variants={staggerVariants}
                         whileHover={{ scale: 1.03 }}
-                        onClick={() => setIsModalOpen(true)}
+                        onClick={() => navigate('/contact')}
                         className="flex items-center gap-3 px-8 py-4 rounded-full bg-[#0f3d32] text-white font-medium text-lg shadow-[0_8px_20px_rgba(15,61,50,0.2)] transition-transform duration-300"
                     >
                         Request Callback <ArrowRight className="w-5 h-5" />
