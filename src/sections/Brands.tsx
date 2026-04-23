@@ -51,19 +51,22 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
   const [isFlippedMobile, setIsFlippedMobile] = useState(false);
   const [isHoveredDesktop, setIsHoveredDesktop] = useState(false);
 
+  const isFlipped = isFlippedMobile || isHoveredDesktop;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-      className="perspective-1000 aspect-[4/3] lg:aspect-[1.2] w-full group outline-none select-none"
+      animate={{ aspectRatio: isFlipped ? 0.75 : 1.333 }}
+      transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
+      className="perspective-1000 w-full group outline-none select-none"
       style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
     >
       <motion.div
         initial={false}
-        animate={{ rotateY: isFlippedMobile || isHoveredDesktop ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
         className="relative w-full h-full preserve-3d"
         onPointerEnter={(e) => {
           if (e.pointerType === 'mouse') setIsHoveredDesktop(true);
@@ -180,7 +183,7 @@ const Brands = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto items-center">
           {brands.map((brand, index) => (
             <BrandCard key={index} brand={brand} index={index} />
           ))}
