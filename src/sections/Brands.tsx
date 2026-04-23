@@ -59,7 +59,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
         className="relative w-full h-full [transform-style:preserve-3d] cursor-pointer"
       >
         {/* FRONT FACE */}

@@ -65,23 +65,16 @@ const Offerings = () => {
           {offerings.map((offering, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20, scale: 0.95, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                type: 'spring',
-                stiffness: 100,
-                damping: 20,
-                delay: i * 0.08,
-                opacity: { duration: 0.4 },
-                filter: { duration: 0.4 }
-              }}
+              initial={{ opacity: 0, y: 5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
               whileHover={{
-                scale: 1.05,
-                boxShadow: "0 25px 50px rgba(15, 61, 50, 0.18)",
-                borderColor: "rgba(15, 61, 50, 0.2)",
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(15, 61, 50, 0.15)",
+                borderColor: "rgba(15, 61, 50, 0.1)",
               }}
-              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white border border-[#0f3d32]/5 transition-all duration-300 cursor-default shadow-[0_4px_20px_rgba(15,61,50,0.04)]"
+              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white border border-[#0f3d32]/5 transition-all duration-200 cursor-default shadow-[0_4px_20px_rgba(15,61,50,0.04)]"
             >
               {/* Icon container */}
               <div
