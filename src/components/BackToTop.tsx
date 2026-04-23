@@ -41,7 +41,7 @@ const BackToTop = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-[90] p-4 rounded-full bg-[#0f3d32] text-white shadow-[0_15px_35px_rgba(15,61,50,0.4)] border border-white/10 hover:bg-[#4ABFB0] transition-colors group"
+                    className="fixed bottom-8 right-8 z-[90] p-4 rounded-full bg-[#0f3d32] text-white shadow-[0_20px_45px_rgba(15,61,50,0.45)] border border-white/10 hover:bg-[#4ABFB0] transition-colors group"
                     aria-label="Back to top"
                 >
                     <ChevronUp className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-0.5" />
