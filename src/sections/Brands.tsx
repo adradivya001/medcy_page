@@ -58,7 +58,7 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      animate={{ height: isFlipped ? 520 : 280 }}
+      animate={{ height: isFlipped ? 480 : 280 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
       className="perspective-1000 w-full group outline-none select-none overflow-visible"
       style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
@@ -145,7 +145,7 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
             </h3>
             <p className="text-[#2a6a5a]/70 text-sm font-medium mb-6 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
 
-            <div className="text-[#2a6a5a] text-[13px] leading-relaxed mb-6 space-y-4 font-light overflow-y-auto custom-scrollbar pr-2 flex-1">
+            <div className="text-[#2a6a5a] text-[13px] leading-relaxed mb-6 space-y-4 font-light overflow-y-auto custom-scrollbar pr-2">
               {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
             </div>
 
