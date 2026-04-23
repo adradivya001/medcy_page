@@ -91,7 +91,7 @@ const Navbar = () => {
               transition={{ duration: 0.4 }}
               className="group hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0f3d32] text-white text-sm font-semibold transition-all shadow-[0_15px_30px_rgba(15, 61, 50, 0.35)] whitespace-nowrap"
             >
-              Contact Us <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              Partner with us? <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
             </motion.button>
 
             {/* Hamburger Button */}
@@ -146,7 +146,7 @@ const Navbar = () => {
                 }}
                 className="mt-8 flex items-center justify-between p-6 rounded-3xl bg-[#0f3d32] text-white text-xl font-medium group"
               >
-                Contact Us
+                Partner with us?
                 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
               </motion.button>
             </div>

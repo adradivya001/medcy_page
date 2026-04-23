@@ -64,7 +64,7 @@ const Challenges = () => {
             transition={{ duration: 0.7 }}
             className="w-full lg:w-[42%] flex-shrink-0 lg:sticky lg:top-28 self-start"
           >
-            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#4ABFB0] mb-4 bg-[#4ABFB0]/10 px-4 py-1.5 rounded-full">
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#0f3d32]/60 mb-5 bg-[#0f3d32]/5 border border-[#0f3d32]/10 px-4 py-1.5 rounded-full">
               Real Challenges
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#0f3d32] leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
