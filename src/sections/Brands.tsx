@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Baby, Activity, Hourglass } from 'lucide-react';
+import { Baby, Activity, Hourglass, X } from 'lucide-react';
+import { useState } from 'react';
 
 const brands = [
   {
@@ -46,6 +47,117 @@ const brands = [
   }
 ];
 
+const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number }) => {
+  const [isFlippedMobile, setIsFlippedMobile] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+      className="perspective-1000 h-[400px] sm:h-[450px] md:h-[500px] w-full group outline-none select-none"
+      style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
+    >
+      <motion.div
+        initial={false}
+        animate={{ rotateY: isFlippedMobile ? 180 : 0 }}
+        whileHover={{ rotateY: 180 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        className="relative w-full h-full preserve-3d"
+      >
+        {/* Front Face */}
+        <div className={`absolute inset-0 backface-hidden rounded-[24px] overflow-hidden bg-[#CFE8E5] border border-[#0f3d32]/5 flex flex-col items-center justify-center ${brand.frontImage ? 'p-0' : 'p-6 shadow-lg'}`}>
+          {brand.frontImage ? (
+            <>
+              <img
+                src={brand.frontImage}
+                alt={brand.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsFlippedMobile(true);
+                }}
+                className="md:hidden absolute bottom-6 right-6 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full text-xs font-bold text-[#0f3d32] shadow-xl z-20 flex items-center gap-1.5 border border-[#0f3d32]/10"
+              >
+                More info <span className="text-[14px] leading-none">&rarr;</span>
+              </button>
+            </>
+          ) : (
+            <div className="flex flex-col items-center relative w-full h-full justify-center">
+              <div className="mb-6 p-4 rounded-2xl bg-[#0f3d32]/5 border border-[#0f3d32]/10">
+                {brand.icon}
+              </div>
+              <h3
+                className="text-2xl font-medium text-[#0f3d32] tracking-wider text-center"
+                style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 2px 10px rgba(15, 61, 50, 0.05)' }}
+              >
+                {brand.name}
+              </h3>
+              <p className="text-[#2a6a5a]/60 text-xs mt-6 uppercase tracking-widest font-semibold italic hidden md:block">Hover to explore</p>
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsFlippedMobile(true);
+                }}
+                className="md:hidden absolute bottom-6 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full text-xs font-bold text-[#0f3d32] shadow-xl z-20 flex items-center gap-1.5 border border-[#0f3d32]/10"
+              >
+                More info <span className="text-[14px] leading-none">&rarr;</span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Back Face */}
+        <div
+          className={`absolute inset-0 backface-hidden [transform:rotateY(180deg)] rounded-[24px] p-6 bg-white border border-[#0f3d32]/5 overflow-hidden shadow-2xl flex flex-col`}
+        >
+          <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-10`} />
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsFlippedMobile(false);
+            }}
+            className="md:hidden absolute top-4 right-4 p-2 bg-[#CFE8E5]/50 backdrop-blur-md rounded-full text-[#0f3d32] z-30 shadow-sm border border-[#0f3d32]/10"
+          >
+            <X className="w-4 h-4" />
+          </button>
+
+          <div className="relative z-10 flex flex-col flex-1 mt-6 md:mt-0">
+            <h3
+              className="text-2xl font-medium mb-1 text-[#0f3d32] tracking-wider"
+              style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 2px 10px rgba(15, 61, 50, 0.05)' }}
+            >
+              {brand.name}
+            </h3>
+            <p className="text-[#2a6a5a]/70 text-sm font-medium mb-6 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
+
+            <div className="text-[#2a6a5a] text-[13px] leading-relaxed mb-6 space-y-4 font-light overflow-y-auto custom-scrollbar pr-2 flex-1">
+              {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+
+            <ul className="space-y-2.5 mt-auto pt-4 border-t border-[#0f3d32]/5">
+              {brand.highlights.map((h, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-xs text-[#0f3d32]/80 font-medium leading-tight">
+                  <span className="text-[#4ABFB0] text-[10px] mt-0.5">●</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Decorative corner glow */}
+          <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-brand-teal/20 blur-2xl rounded-full opacity-50 pointer-events-none" />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const Brands = () => {
   return (
     <section id="our-brands" className="pt-4 pb-24 relative overflow-hidden bg-[#CFE8E5]">
@@ -64,80 +176,7 @@ const Brands = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto items-stretch">
           {brands.map((brand, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="perspective-1000 h-[400px] sm:h-[450px] md:h-[500px] w-full group cursor-pointer outline-none select-none"
-              style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
-            >
-              <motion.div
-                initial={false}
-                animate={{ rotateY: 0 }}
-                whileHover={{ rotateY: 180 }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
-                className="relative w-full h-full preserve-3d"
-              >
-                {/* Front Face */}
-                <div className={`absolute inset-0 backface-hidden rounded-[24px] overflow-hidden bg-[#CFE8E5] border border-[#0f3d32]/5 flex flex-col items-center justify-center ${brand.frontImage ? 'p-0' : 'p-6 shadow-lg'}`}>
-                  {brand.frontImage ? (
-                    <img
-                      src={brand.frontImage}
-                      alt={brand.name}
-                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <div className="mb-6 p-4 rounded-2xl bg-[#0f3d32]/5 border border-[#0f3d32]/10">
-                        {brand.icon}
-                      </div>
-                      <h3
-                        className="text-2xl font-medium text-[#0f3d32] tracking-wider text-center"
-                        style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 2px 10px rgba(15, 61, 50, 0.05)' }}
-                      >
-                        {brand.name}
-                      </h3>
-                      <p className="text-[#2a6a5a]/60 text-xs mt-6 uppercase tracking-widest font-semibold italic">Hover to explore</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Back Face */}
-                <div
-                  className={`absolute inset-0 backface-hidden [transform:rotateY(180deg)] rounded-[24px] p-6 bg-white border border-[#0f3d32]/5 overflow-hidden shadow-2xl`}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-10`} />
-
-                  <div className="relative z-10 h-full flex flex-col">
-                    <h3
-                      className="text-2xl font-medium mb-1 text-[#0f3d32] tracking-wider"
-                      style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 2px 10px rgba(15, 61, 50, 0.05)' }}
-                    >
-                      {brand.name}
-                    </h3>
-                    <p className="text-[#2a6a5a]/70 text-sm font-medium mb-6 italic tracking-tight">{brand.tagline}</p>
-
-                    <div className="text-[#2a6a5a] text-[13px] leading-relaxed mb-6 space-y-4 font-light">
-                      {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
-                    </div>
-
-                    <ul className="space-y-2.5 mb-8">
-                      {brand.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2.5 text-xs text-[#0f3d32]/80 font-medium leading-tight">
-                          <span className="text-[#4ABFB0] text-[10px] mt-0.5">●</span>
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Decorative corner glow */}
-                  <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-brand-teal/20 blur-2xl rounded-full opacity-50" />
-                </div>
-              </motion.div>
-            </motion.div>
+            <BrandCard key={index} brand={brand} index={index} />
           ))}
         </div>
       </div>
