@@ -31,9 +31,9 @@ const Navbar = () => {
           onMouseLeave={() => setIsHovered(false)}
           initial={false}
           animate={{
-            width: isScrolled && !isHovered ? "750px" : "85%",
-            maxWidth: isScrolled && !isHovered ? "750px" : "1200px",
-            padding: isScrolled && !isHovered ? "8px 8px 8px 20px" : "14px 14px 14px 32px",
+            width: isScrolled && !isHovered ? "min(750px, 90vw)" : "min(1200px, 95vw)",
+            maxWidth: "1200px",
+            padding: isScrolled && !isHovered ? "8px 8px 8px 16px" : "10px 10px 10px 20px",
             backgroundColor: isScrolled ? "rgba(240, 250, 249, 0.45)" : "rgba(240, 250, 249, 0.3)",
             backdropFilter: isScrolled ? "blur(16px)" : "blur(12px)",
             boxShadow: isScrolled ? "0 10px 40px rgba(15, 61, 50, 0.08)" : "0 4px 20px rgba(0,0,0,0.05)",
@@ -86,7 +86,7 @@ const Navbar = () => {
               scale: (!isScrolled || isHovered) ? 1 : 1
             }}
             transition={{ duration: 0.4 }}
-            className="group flex items-center gap-2 px-6 lg:px-8 py-2.5 lg:py-3.5 rounded-full bg-[#13443e] text-white text-sm font-semibold hover:bg-[#0f2822] transition-all shadow-lg"
+            className="group flex items-center gap-2 px-4 lg:px-8 py-2.5 lg:py-3.5 rounded-full bg-[#13443e] text-white text-xs lg:text-sm font-semibold hover:bg-[#0f2822] transition-all shadow-lg whitespace-nowrap"
           >
             Contact Us <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
           </motion.button>
