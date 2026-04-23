@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+
 
 
 interface InteractiveBackgroundProps {
@@ -55,65 +55,47 @@ export default function InteractiveBackground({
                 '--mouse-y': '-1000px'
             } as any}
         >
-            {/* Slow Spinning Decorative Flowers */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                {[
-                    { top: '10%', left: '15%', size: 120, delay: 0, duration: 40 },
-                    { top: '70%', left: '5%', size: 180, delay: -5, duration: 55 },
-                    { top: '20%', left: '80%', size: 150, delay: -10, duration: 45 },
-                    { top: '75%', left: '85%', size: 140, delay: -15, duration: 50 },
-                    { top: '40%', left: '50%', size: 200, delay: -20, duration: 65, opacity: 0.05 },
-                ].map((flower, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute"
-                        style={{
-                            top: flower.top,
-                            left: flower.left,
-                            width: flower.size,
-                            height: flower.size,
-                            opacity: flower.opacity || 0.12,
-                            backgroundImage: 'url("/lotus_icon_transparent.png")',
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat',
-                        }}
-                        animate={{
-                            rotate: 360,
-                        }}
-                        transition={{
-                            duration: flower.duration,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: flower.delay
-                        }}
-                    />
-                ))}
-            </div>
+            <style>{`
+                @keyframes slow-spin-pattern {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+            `}</style>
+
+            <svg width="0" height="0" className="absolute hidden">
+                <defs>
+                    <pattern id="spinning-lotus" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                        <g style={{ transformOrigin: '30px 30px', animation: 'slow-spin-pattern 25s linear infinite' }}>
+                            <image href="/lotus_icon_transparent.png" x="0" y="0" width="60" height="60" />
+                        </g>
+                    </pattern>
+                </defs>
+            </svg>
 
             {/* Base Faint Pattern Layer */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none opacity-[0.15]"
-                style={{
-                    backgroundImage: 'url("/lotus_icon_transparent.png")',
-                    backgroundSize: '60px 60px',
-                    backgroundRepeat: 'repeat',
-                    mixBlendMode: 'multiply'
-                }}
-            />
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.04]"
+                style={{ mixBlendMode: 'multiply' }}
+            >
+                <svg className="w-full h-full">
+                    <rect width="100%" height="100%" fill="url(#spinning-lotus)" />
+                </svg>
+            </div>
 
             {/* Spotlight Reveal Pattern Layer */}
             <div
                 className="absolute inset-0 z-0 pointer-events-none"
                 style={{
-                    backgroundImage: 'url("/lotus_icon_transparent.png")',
-                    backgroundSize: '60px 60px',
-                    backgroundRepeat: 'repeat',
-                    opacity: isHovered ? 1 : 0,
+                    opacity: isHovered ? 0.5 : 0,
                     transition: 'opacity 0.5s ease',
                     WebkitMaskImage: 'radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%)',
                     maskImage: 'radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%)',
                 }}
-            />
+            >
+                <svg className="w-full h-full">
+                    <rect width="100%" height="100%" fill="url(#spinning-lotus)" />
+                </svg>
+            </div>
 
             {/* Optional Exclusion Mask */}
             {exclusionArea && (
