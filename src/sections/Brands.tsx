@@ -78,12 +78,7 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
         </div>
 
-        {/* Title Overlay (Visible when not hovered) */}
-        <div className="absolute bottom-6 left-6 right-6 z-10 group-hover:opacity-0 transition-opacity duration-300">
-           <h3 className="text-2xl font-bold text-white drop-shadow-md" style={{ fontFamily: "'Playfair Display', serif" }}>
-             {brand.name}
-           </h3>
-        </div>
+
 
         {/* Content Panel (Slides up on hover) */}
         <motion.div
