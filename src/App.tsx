@@ -23,15 +23,15 @@ import BackToTop from './components/BackToTop';
 const Footer = () => (
   <footer className="py-12 border-t border-white/5 bg-background">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <motion.div 
           animate={{ opacity: [1, 0.4, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-12 h-12 flex items-center justify-center"
+          className="relative w-28 h-28 flex items-center justify-center"
         >
           <TransparentLogo src="/medcy_logo.png" alt="Medcy Logo" className="w-full h-full object-contain" />
         </motion.div>
-        <span className="font-bold">Medcy Health Tech</span>
+        <span className="font-bold text-2xl text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>Medcy Health Tech</span>
       </div>
 
       <div className="flex gap-8 text-sm text-slate-500 font-medium">
