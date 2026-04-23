@@ -13,6 +13,13 @@ export interface Lead {
 
 export const submitLead = async (leadData: Lead) => {
     try {
+        if (supabase.supabaseUrl === 'https://dummy.supabase.co' || import.meta.env.VITE_SUPABASE_URL === undefined) {
+            console.warn("MOCK SUBMISSION: Supabase keys are not set. Lead data:", leadData);
+            // Simulate a network request delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+            return { data: [leadData], error: null };
+        }
+
         const { data, error } = await supabase
             .from('leads')
             .insert([leadData])

@@ -49,6 +49,7 @@ const brands = [
 
 const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number }) => {
   const [isFlippedMobile, setIsFlippedMobile] = useState(false);
+  const [isHoveredDesktop, setIsHoveredDesktop] = useState(false);
 
   return (
     <motion.div
@@ -61,10 +62,15 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
     >
       <motion.div
         initial={false}
-        animate={{ rotateY: isFlippedMobile ? 180 : 0 }}
-        whileHover={{ rotateY: 180 }}
+        animate={{ rotateY: isFlippedMobile || isHoveredDesktop ? 180 : 0 }}
         transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
         className="relative w-full h-full preserve-3d"
+        onPointerEnter={(e) => {
+          if (e.pointerType === 'mouse') setIsHoveredDesktop(true);
+        }}
+        onPointerLeave={(e) => {
+          if (e.pointerType === 'mouse') setIsHoveredDesktop(false);
+        }}
       >
         {/* Front Face */}
         <div className={`absolute inset-0 backface-hidden rounded-[24px] overflow-hidden bg-[#CFE8E5] border border-[#0f3d32]/5 flex flex-col items-center justify-center ${brand.frontImage ? 'p-0' : 'p-6 shadow-lg'}`}>
