@@ -62,23 +62,20 @@ export default function InteractiveBackground({
                 }
             `}</style>
 
-            <svg width="0" height="0" className="absolute hidden">
-                <defs>
-                    <pattern id="spinning-lotus" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                        <g style={{ transformOrigin: '30px 30px', animation: 'slow-spin-pattern 25s linear infinite' }}>
-                            <image href="/lotus_icon_transparent.png" x="0" y="0" width="60" height="60" />
-                        </g>
-                    </pattern>
-                </defs>
-            </svg>
-
             {/* Base Faint Pattern Layer */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none opacity-[0.04]"
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.15]"
                 style={{ mixBlendMode: 'multiply' }}
             >
                 <svg className="w-full h-full">
-                    <rect width="100%" height="100%" fill="url(#spinning-lotus)" />
+                    <defs>
+                        <pattern id="spinning-lotus-base" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                            <g style={{ transformOrigin: '30px 30px', animation: 'slow-spin-pattern 25s linear infinite' }}>
+                                <image href="/lotus_icon_transparent.png" x="0" y="0" width="60" height="60" />
+                            </g>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#spinning-lotus-base)" />
                 </svg>
             </div>
 
@@ -86,14 +83,21 @@ export default function InteractiveBackground({
             <div
                 className="absolute inset-0 z-0 pointer-events-none"
                 style={{
-                    opacity: isHovered ? 0.5 : 0,
+                    opacity: isHovered ? 1 : 0,
                     transition: 'opacity 0.5s ease',
                     WebkitMaskImage: 'radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%)',
                     maskImage: 'radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%)',
                 }}
             >
                 <svg className="w-full h-full">
-                    <rect width="100%" height="100%" fill="url(#spinning-lotus)" />
+                    <defs>
+                        <pattern id="spinning-lotus-spotlight" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                            <g style={{ transformOrigin: '30px 30px', animation: 'slow-spin-pattern 25s linear infinite' }}>
+                                <image href="/lotus_icon_transparent.png" x="0" y="0" width="60" height="60" />
+                            </g>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#spinning-lotus-spotlight)" />
                 </svg>
             </div>
 
