@@ -64,7 +64,7 @@ export default function InteractiveBackground({
 
             {/* Base Faint Pattern Layer */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none opacity-[0.15]"
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]"
                 style={{ mixBlendMode: 'multiply' }}
             >
                 <svg className="w-full h-full">
@@ -83,7 +83,7 @@ export default function InteractiveBackground({
             <div
                 className="absolute inset-0 z-0 pointer-events-none"
                 style={{
-                    opacity: isHovered ? 1 : 0,
+                    opacity: isHovered ? 0.4 : 0,
                     transition: 'opacity 0.5s ease',
                     WebkitMaskImage: 'radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%)',
                     maskImage: 'radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%)',
