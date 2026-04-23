@@ -65,10 +65,17 @@ const Offerings = () => {
           {offerings.map((offering, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.9, y: 10 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, scale: 0.95, filter: 'blur(4px)' }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.25, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ 
+                type: 'spring',
+                stiffness: 100,
+                damping: 20,
+                delay: i * 0.08,
+                opacity: { duration: 0.4 },
+                filter: { duration: 0.4 }
+              }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 25px 50px rgba(15, 61, 50, 0.18)",
