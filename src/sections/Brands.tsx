@@ -56,8 +56,12 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
   return (
     <div 
       className="w-full"
-      onMouseEnter={() => setIsHoveredDesktop(true)}
-      onMouseLeave={() => setIsHoveredDesktop(false)}
+      onPointerEnter={(e) => {
+        if (e.pointerType === 'mouse') setIsHoveredDesktop(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === 'mouse') setIsHoveredDesktop(false);
+      }}
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
