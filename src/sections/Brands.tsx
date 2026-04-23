@@ -14,7 +14,7 @@ const brands = [
     ],
     icon: <Baby className="w-8 h-8 text-[#0f3d32]" />,
     color: "from-brand-teal/20 to-brand-teal/5",
-    frontImage: "/janmasethu.png"
+    frontImage: "/.png/janmasethu.png"
   },
   {
     name: "Kalpa Sethu",
@@ -28,7 +28,7 @@ const brands = [
     ],
     icon: <Hourglass className="w-8 h-8 text-[#0f3d32]" />,
     color: "from-[#4ABFB0]/20 to-[#4ABFB0]/5",
-    frontImage: "/kalpasethu.png"
+    frontImage: "/.png/kalpasethu.png"
   },
   {
     name: "Akshaya Sethu",
@@ -42,7 +42,7 @@ const brands = [
     ],
     icon: <Activity className="w-8 h-8 text-[#0f3d32]" />,
     color: "from-brand-emerald/20 to-brand-emerald/5",
-    frontImage: "/akshaya.png"
+    frontImage: "/.png/Akshayasethu.png"
   }
 ];
 
