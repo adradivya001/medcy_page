@@ -89,20 +89,17 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
 
         {/* Content Panel (Slides up on hover) */}
         <motion.div
-          className={`absolute inset-0 z-20 bg-white flex flex-col p-6 lg:p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isExpandedMobile ? 'translate-y-0' : 'translate-y-[calc(100%-80px)] md:translate-y-full group-hover:translate-y-0'}`}
+          className={`absolute inset-0 z-20 bg-white flex flex-col p-6 lg:p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isExpandedMobile ? 'translate-y-0' : 'translate-y-full md:group-hover:translate-y-0'}`}
         >
-          {/* Mobile Tab/Handle */}
-          <div 
-            className="md:hidden absolute top-0 left-0 right-0 h-20 flex items-center justify-between px-6 cursor-pointer"
-            onClick={() => setIsExpandedMobile(!isExpandedMobile)}
+          {/* Mobile Close Button (Inside Panel) */}
+          <button 
+            className="md:hidden absolute top-6 right-6 p-2 bg-[#CFE8E5]/50 backdrop-blur-md rounded-full text-[#0f3d32] z-30 shadow-sm border border-[#0f3d32]/10"
+            onClick={() => setIsExpandedMobile(false)}
           >
-            <h3 className="text-xl font-bold text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>{brand.name}</h3>
-            <div className="w-8 h-8 rounded-full bg-[#CFE8E5] flex items-center justify-center">
-              {isExpandedMobile ? <X className="w-4 h-4 text-[#0f3d32]" /> : <span className="text-[#0f3d32] text-xl">+</span>}
-            </div>
-          </div>
+            <X className="w-5 h-5" />
+          </button>
 
-          <div className="relative z-10 flex flex-col flex-1 mt-12 md:mt-0 overflow-hidden">
+          <div className="relative z-10 flex flex-col flex-1 mt-6 md:mt-0 overflow-hidden">
             <h3
               className="text-2xl font-bold mb-1 text-[#0f3d32] tracking-wider"
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -128,6 +125,16 @@ const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
           {/* Decorative Gradient */}
           <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-5 pointer-events-none`} />
         </motion.div>
+
+        {/* Mobile Floating '+' Button */}
+        {!isExpandedMobile && (
+          <button
+            onClick={() => setIsExpandedMobile(true)}
+            className="md:hidden absolute bottom-6 right-6 w-12 h-12 bg-white/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-xl z-10 active:scale-95 transition-transform"
+          >
+            <span className="text-2xl font-light text-[#0f3d32]">+</span>
+          </button>
+        )}
       </motion.div>
     </div>
   );
