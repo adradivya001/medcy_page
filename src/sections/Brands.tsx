@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Baby, Activity, Hourglass, X } from 'lucide-react';
+import { Baby, Activity, Hourglass } from 'lucide-react';
 import { useState } from 'react';
 
 const brands = [
@@ -48,93 +48,80 @@ const brands = [
 ];
 
 const BrandCard = ({ brand }: { brand: typeof brands[0] }) => {
-  const [isExpandedMobile, setIsExpandedMobile] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div className="w-full">
+    <div 
+      className="w-full h-[450px] [perspective:1200px]"
+      onMouseEnter={() => setIsFlipped(true)}
+      onMouseLeave={() => setIsFlipped(false)}
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full h-[420px] group rounded-[24px] overflow-hidden shadow-lg border border-[#0f3d32]/10 bg-white"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full h-full [transform-style:preserve-3d] cursor-pointer"
       >
-        {/* Main Image Background */}
-        <div className="absolute inset-0 z-0 bg-[#CFE8E5]">
+        {/* FRONT FACE */}
+        <div className="absolute inset-0 [backface-visibility:hidden] rounded-[28px] overflow-hidden shadow-xl border border-[#0f3d32]/10 bg-[#CFE8E5]">
           {brand.frontImage ? (
             <img
               src={brand.frontImage}
               alt={brand.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
-               <div className="p-6 rounded-2xl bg-[#0f3d32]/5 border border-[#0f3d32]/10">
+            <div className="w-full h-full flex flex-col items-center justify-center gap-6 p-8">
+               <div className="p-6 rounded-3xl bg-white shadow-sm border border-[#0f3d32]/5">
                 {brand.icon}
               </div>
+              <h3 className="text-3xl font-bold text-[#0f3d32] tracking-wider" style={{ fontFamily: "'Playfair Display', serif" }}>
+                {brand.name}
+              </h3>
             </div>
           )}
-          {/* Overlay to ensure title visibility if needed */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute bottom-8 left-8 right-8">
+            <h3 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>{brand.name}</h3>
+            <p className="text-white/90 text-sm font-medium tracking-wide">{brand.tagline}</p>
+          </div>
+          
+          {/* Mobile Flip Indicator */}
+          <div className="md:hidden absolute top-6 right-6 w-10 h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20">
+            <span className="text-xl">+</span>
+          </div>
         </div>
 
-        {/* Title Overlay (Visible when not hovered) */}
-        {!brand.frontImage && (
-           <div className="absolute inset-0 flex flex-col items-center justify-center z-10 group-hover:opacity-0 transition-opacity duration-500">
-             <h3 className="text-2xl font-bold text-[#0f3d32] tracking-wider" style={{ fontFamily: "'Playfair Display', serif" }}>
-               {brand.name}
-             </h3>
-           </div>
-        )}
-
-        {/* Content Panel (Slides up on hover) */}
-        <motion.div
-          className={`absolute inset-0 z-20 bg-white flex flex-col p-6 lg:p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isExpandedMobile ? 'translate-y-0' : 'translate-y-full md:group-hover:translate-y-0'}`}
-        >
-          {/* Mobile Close Button (Inside Panel) */}
-          <button 
-            className="md:hidden absolute top-6 right-6 p-2 bg-[#CFE8E5]/50 backdrop-blur-md rounded-full text-[#0f3d32] z-30 shadow-sm border border-[#0f3d32]/10"
-            onClick={() => setIsExpandedMobile(false)}
-          >
-            <X className="w-5 h-5" />
-          </button>
-
-          <div className="relative z-10 flex flex-col flex-1 mt-6 md:mt-0 overflow-hidden">
-            <h3
-              className="text-2xl font-bold mb-1 text-[#0f3d32] tracking-wider"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              {brand.name}
-            </h3>
-            <p className="text-[#0f3d32] text-[16px] font-semibold mb-5 italic tracking-tight">{brand.tagline}</p>
-
-            <div className="text-[#08241e] text-[15px] leading-relaxed mb-6 space-y-4 font-medium overflow-y-auto custom-scrollbar pr-2 flex-1">
-              {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+        {/* BACK FACE */}
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[28px] overflow-hidden shadow-2xl border border-[#0f3d32]/20 bg-white p-8 flex flex-col">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-3 rounded-xl bg-[#0f3d32]/5">
+              {brand.icon}
             </div>
+            <div>
+              <h3 className="text-2xl font-bold text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>{brand.name}</h3>
+              <p className="text-[#4ABFB0] text-xs font-bold uppercase tracking-widest">{brand.tagline}</p>
+            </div>
+          </div>
 
-            <ul className="space-y-3 pt-4 border-t border-[#0f3d32]/20">
+          <div className="text-[#08241e] text-[15px] leading-relaxed mb-6 space-y-4 font-medium overflow-y-auto custom-scrollbar pr-2 flex-1">
+            {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+
+          <div className="pt-6 border-t border-[#0f3d32]/10">
+            <h4 className="text-[13px] font-bold text-[#0f3d32]/60 uppercase tracking-widest mb-4">Key Advantages</h4>
+            <ul className="grid grid-cols-1 gap-3">
               {brand.highlights.map((h, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-[14px] text-[#08241e] font-semibold leading-snug">
-                  <span className="text-[#4ABFB0] text-[12px] mt-0.5">●</span>
+                <li key={i} className="flex items-start gap-3 text-[14px] text-[#08241e] font-bold leading-tight">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#4ABFB0] mt-1.5 shrink-0" />
                   {h}
                 </li>
               ))}
             </ul>
           </div>
-          
-          {/* Decorative Gradient */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-5 pointer-events-none`} />
-        </motion.div>
 
-        {/* Mobile Floating '+' Button */}
-        {!isExpandedMobile && (
-          <button
-            onClick={() => setIsExpandedMobile(true)}
-            className="md:hidden absolute bottom-6 right-6 w-12 h-12 bg-white/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-[0_12px_24px_rgba(15,61,50,0.3)] z-10 active:scale-95 transition-transform"
-          >
-            <span className="text-2xl font-light text-[#0f3d32]">+</span>
-          </button>
-        )}
+          <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-[0.03] pointer-events-none`} />
+        </div>
       </motion.div>
     </div>
   );
