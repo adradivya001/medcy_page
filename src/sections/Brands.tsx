@@ -143,9 +143,9 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
             >
               {brand.name}
             </h3>
-            <p className="text-[#2a6a5a]/70 text-sm font-medium mb-6 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
+            <p className="text-[#0f3d32]/80 text-sm font-semibold mb-6 italic tracking-tight pr-8 md:pr-0">{brand.tagline}</p>
 
-            <div className="text-[#2a6a5a] text-[13px] leading-relaxed mb-6 space-y-4 font-light overflow-y-auto custom-scrollbar pr-2">
+            <div className="text-[#0f3d32]/90 text-[13px] leading-relaxed mb-6 space-y-4 font-normal overflow-y-auto custom-scrollbar pr-2">
               {brand.content.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
             </div>
 
@@ -178,7 +178,7 @@ const Brands = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>
             Our Brands
           </h2>
-          <p className="text-[#2a6a5a] max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-[#0f3d32]/80 max-w-2xl mx-auto font-medium leading-relaxed">
             Specialized clinical environments designed to bridge the gap between technology and patient care.
           </p>
         </div>

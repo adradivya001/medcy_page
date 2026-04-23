@@ -18,6 +18,8 @@ import OfferingsPage from './pages/OfferingsPage';
 import WhyUsPage from './pages/WhyUsPage';
 import FoundersPage from './pages/FoundersPage';
 
+import BackToTop from './components/BackToTop';
+
 const Footer = () => (
   <footer className="py-12 border-t border-white/5 bg-background">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
@@ -109,6 +111,7 @@ const App = () => {
             <div className="fixed inset-0 bg-mesh pointer-events-none" />
 
             <Navbar />
+            <BackToTop />
 
             <AnimatedRoutes />
 
