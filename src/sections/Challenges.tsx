@@ -1,0 +1,166 @@
+"use client";
+import { motion } from 'framer-motion';
+import { AlertCircle } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+
+const challenges = [
+  {
+    title: "Dominated by big hospitals",
+    description: "Large hospital chains make it hard for small clinics to reach patients.",
+    image: "/challenges/missed-calls.png"
+  },
+  {
+    title: "Overloaded clinic staff",
+    description: "Doctors and staff handle calls and marketing, reducing patient care time.",
+    image: "/challenges/overloaded-desk.png"
+  },
+  {
+    title: "Missing proactive patients",
+    description: "Clinics focus only on treatment seekers and miss wellness-focused patients.",
+    image: "/challenges/empty-waiting-room.png"
+  },
+  {
+    title: "Disconnected tools",
+    description: "Different systems don’t work together, causing inefficiency.",
+    image: "/challenges/poor-followups.png"
+  },
+  {
+    title: "Limited growth potential",
+    description: "Operational issues make it hard for clinics to scale.",
+    image: "/challenges/limited-growth.png"
+  }
+];
+
+const Challenges = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const advance = useCallback(() => {
+    setActiveIndex(prev => (prev + 1) % challenges.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      return;
+    }
+    intervalRef.current = setInterval(advance, 3000); // SLOWED DOWN
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused, advance]);
+
+  return (
+    <section id="challenges" className="py-24 relative overflow-hidden bg-[#CFE8E5]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center min-h-[560px]">
+
+          {/* ── LEFT: Sticky text block ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:w-[42%] flex-shrink-0 lg:sticky lg:top-28 self-start"
+          >
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#4ABFB0] mb-4 bg-[#4ABFB0]/10 px-4 py-1.5 rounded-full">
+              Real Challenges
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#0f3d32] leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+              The challenges<br />slowing down<br />your clinic growth
+            </h2>
+            <p className="text-lg text-[#2a6a5a] font-light leading-relaxed mb-8">
+              These are not system problems — these are everyday realities in most clinics.
+            </p>
+
+            {/* Progress dots */}
+            <div className="flex gap-3 items-center">
+              {challenges.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`h-2 rounded-full transition-all duration-500 ${i === activeIndex
+                    ? 'w-8 bg-[#0f3d32]'
+                    : 'w-2 bg-[#0f3d32]/20 hover:bg-[#0f3d32]/40'
+                    }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── RIGHT: Auto-scrolling card stack ── */}
+          <div className="lg:w-[58%] relative">
+            {/* Stacked card viewport — shows 1 prominent + peek of next */}
+            <div
+              className="relative overflow-hidden"
+              style={{ height: '420px' }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {challenges.map((challenge, i) => {
+                // Compute position relative to activeIndex
+                const total = challenges.length;
+                let offset = (i - activeIndex + total) % total;
+                // 0 = active, 1 = next, 2+ = hidden below
+                return (
+                  <motion.div
+                    key={i}
+                    animate={{
+                      y: offset === 0 ? 0 : offset === 1 ? '105%' : '210%',
+                      scale: offset === 0 ? 1 : 0.94,
+                      opacity: offset === 0 ? 1 : offset === 1 ? 0.5 : 0,
+                      zIndex: offset === 0 ? 10 : offset === 1 ? 5 : 0,
+                    }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 cursor-pointer"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                    onClick={() => setActiveIndex(i)}
+                  >
+                    <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-xl">
+                      {/* Background image */}
+                      <div
+                        className="absolute inset-0 bg-cover bg-center scale-100 hover:scale-105 transition-transform duration-700"
+                        style={{ backgroundImage: `url(${challenge.image})` }}
+                      />
+
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+                      {/* Content always visible */}
+                      <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-[#4ABFB0]/30 border border-[#4ABFB0]/60 flex items-center justify-center backdrop-blur-md shrink-0">
+                            <AlertCircle className="w-4 h-4 text-[#4ABFB0]" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-white tracking-tight leading-tight">
+                            {challenge.title}
+                          </h3>
+                        </div>
+                        <div className="h-px w-12 bg-gradient-to-r from-[#4ABFB0]/60 to-transparent" />
+                        <p className="text-sm text-slate-200 font-light leading-relaxed max-w-sm">
+                          {challenge.description}
+                        </p>
+                      </div>
+
+                      {/* Teal border glow */}
+                      <div className="absolute inset-0 border border-[#4ABFB0]/20 rounded-[2rem] pointer-events-none" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Pause hint */}
+            <p className="text-xs text-[#2a6a5a]/60 text-center mt-4 tracking-wide">
+              Hover to pause · Click dot to jump
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Challenges;

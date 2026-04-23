@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-teal: #4ABFB0;
+  --color-brand-emerald: #2a8a7a;
+  --color-background: #CFE8E5;
+  --color-foreground: #0f3d32;
+  --font-hero: 'Inter Tight', sans-serif;
+}
+
+:root {
+  --color-brand-teal: #4ABFB0;
+  --color-brand-emerald: #2a8a7a;
+  --color-background: #CFE8E5;
+  --color-foreground: #0f3d32;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter Tight', 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}
+
+.neon-border {
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  transition: all 0.3s ease;
+}
+
+.neon-border:hover {
+  border-color: var(--color-brand-teal);
+}
+
+.shadow-neon {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.2), 0 0 40px rgba(20, 184, 166, 0.1);
+}
+
+.glow-teal {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ffffff, #94a3b8);
+}
+
+.font-hero-clean {
+  font-family: var(--font-hero);
+}
+
+.bg-mesh {
+  /* Removed dark mesh — using mint base now */
+  background-image: none;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #b8dbd8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4ABFB0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-teal);
+  opacity: 0.5;
+}
+
+/* Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
