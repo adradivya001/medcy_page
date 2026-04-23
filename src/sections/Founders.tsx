@@ -213,6 +213,14 @@ const Founders = () => {
                         >
                             {/* Modal Header: High-Fidelity Centered Layout */}
                             <div className="pt-0 pb-12 text-center relative px-12">
+                                <motion.div
+                                    animate={{ opacity: [0.5, 1, 0.5], scale: [0.98, 1, 0.98] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                    className="mb-8 flex justify-center"
+                                >
+                                    <img src="/.png/health tech logo (1).svg" alt="Medcy Logo" className="h-10 w-auto opacity-70" />
+                                </motion.div>
+
                                 <button
                                     onClick={() => setSelectedFounder(null)}
                                     className="absolute top-10 right-10 p-3 rounded-full hover:bg-slate-50 transition-colors z-20 group"

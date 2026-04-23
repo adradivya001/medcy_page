@@ -58,9 +58,9 @@ const BrandCard = ({ brand, index }: { brand: typeof brands[0], index: number })
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      animate={{ aspectRatio: isFlipped ? 0.6 : 1.333 }}
+      animate={{ height: isFlipped ? 'auto' : 320 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
-      className="perspective-1000 w-full group outline-none select-none"
+      className="perspective-1000 w-full group outline-none select-none overflow-visible"
       style={{ WebkitTapHighlightColor: 'rgba(255, 182, 193, 0.3)' }}
     >
       <motion.div
