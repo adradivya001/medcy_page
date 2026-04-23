@@ -43,10 +43,10 @@ const Offerings = () => {
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "0px" }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-16"
         >
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#0f3d32]/60 mb-5 bg-[#0f3d32]/5 border border-[#0f3d32]/10 px-4 py-1.5 rounded-full">
@@ -65,10 +65,10 @@ const Offerings = () => {
           {offerings.map((offering, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 5 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.3, delay: i * 0.03, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 25px 50px rgba(15, 61, 50, 0.18)",
