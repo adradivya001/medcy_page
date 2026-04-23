@@ -85,10 +85,10 @@ const Navbar = () => {
               whileTap={{ scale: 0.97 }}
               onClick={() => navigate('/contact')}
               animate={{
-                boxShadow: (!isScrolled || isHovered) ? "0 4px 10px rgba(15,61,50,0.1)" : "0_12px_24px_rgba(15,61,50,0.3)",
+                boxShadow: (!isScrolled || isHovered) ? "0 4px 10px rgba(15, 61, 50, 0.1)" : "0 12px 24px rgba(15, 61, 50, 0.3)",
               }}
               transition={{ duration: 0.4 }}
-              className="group hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#13443e] text-white text-sm font-semibold hover:bg-[#0f2822] transition-all shadow-[0_12px_24px_rgba(15,61,50,0.25)] whitespace-nowrap"
+              className="group hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#13443e] text-white text-sm font-semibold hover:bg-[#0f2822] transition-all shadow-[0_12px_24px_rgba(15, 61, 50, 0.3)] whitespace-nowrap"
             >
               Contact Us <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
             </motion.button>

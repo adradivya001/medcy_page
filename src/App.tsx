@@ -27,11 +27,11 @@ const Footer = () => (
         <motion.div 
           animate={{ opacity: [1, 0.4, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-28 h-28 flex items-center justify-center"
+          className="relative w-44 h-44 flex items-center justify-center"
         >
           <TransparentLogo src="/medcy_logo.png" alt="Medcy Logo" className="w-full h-full object-contain" />
         </motion.div>
-        <span className="font-bold text-2xl text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>Medcy Health Tech</span>
+        <span className="font-bold text-3xl text-[#0f3d32]" style={{ fontFamily: "'Playfair Display', serif" }}>Medcy Health Tech</span>
       </div>
 
       <div className="flex gap-8 text-sm text-slate-500 font-medium">

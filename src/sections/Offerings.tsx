@@ -65,16 +65,16 @@ const Offerings = () => {
           {offerings.map((offering, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.4, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 20px 40px rgba(15, 61, 50, 0.12)",
+                boxShadow: "0 25px 50px rgba(15, 61, 50, 0.18)",
                 borderColor: "rgba(15, 61, 50, 0.2)",
               }}
-              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white/60 border border-[#0f3d32]/5 transition-all duration-300 cursor-default"
+              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white border border-[#0f3d32]/5 transition-all duration-400 cursor-default"
               style={{
                 boxShadow: '0 4px 20px rgba(15, 61, 50, 0.04)',
               }}
