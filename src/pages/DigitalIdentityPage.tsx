@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Globe, Zap, Users, BarChart, ArrowRight } from 'lucide-react';
+import { Shield, Globe, Zap, ArrowRight } from 'lucide-react';
 
 const DigitalIdentityPage = () => {
   return (
