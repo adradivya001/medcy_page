@@ -8,6 +8,7 @@ import Challenges from './sections/Challenges';
 import Offerings from './sections/Offerings';
 import WhyUs from './sections/WhyUs';
 import Founders from './sections/Founders';
+import { DoctorProfileCards } from './components/DoctorProfileCards';
 import Contact from './pages/Contact';
 import Preloader from './components/Preloader';
 
@@ -16,6 +17,7 @@ import ChallengesPage from './pages/ChallengesPage';
 import OfferingsPage from './pages/OfferingsPage';
 import WhyUsPage from './pages/WhyUsPage';
 import FoundersPage from './pages/FoundersPage';
+import DigitalIdentityPage from './pages/DigitalIdentityPage';
 
 import BackToTop from './components/BackToTop';
 
@@ -48,6 +50,7 @@ const HomePage = () => (
     <Challenges />
     <Offerings />
     <WhyUs />
+    <DoctorProfileCards />
     <Founders />
   </main>
 );
@@ -87,6 +90,7 @@ const AnimatedRoutes = () => {
         <Route path="/offerings" element={<PageTransition><OfferingsPage /></PageTransition>} />
         <Route path="/why-us" element={<PageTransition><WhyUsPage /></PageTransition>} />
         <Route path="/founders" element={<PageTransition><FoundersPage /></PageTransition>} />
+        <Route path="/digital-identity" element={<PageTransition><DigitalIdentityPage /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
       </Routes>
     </AnimatePresence>

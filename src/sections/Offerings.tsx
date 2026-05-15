@@ -1,108 +1,215 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CalendarCheck, Inbox, Magnet, Bot, TrendingUp, BarChart3 } from 'lucide-react';
+import { CheckCircle2, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const offerings = [
+const pricingTiers = [
   {
-    headline: "Complete Front Office Support",
-    description: "We handle your sales, services, and marketing as one system, so your clinic runs smoothly without extra effort.",
-    icon: <CalendarCheck className="w-5 h-5 text-[#0f3d32]" />,
+    id: "starter",
+    name: "Starter Pack",
+    tagline: "Perfect for clinics getting started online",
+    priceRange: "₹2,999",
+    features: [
+      "Landing page for digital identity",
+      "Google Business Profile management",
+      "Review reply & rating improvement",
+      "WhatsApp appointment + reminders",
+      "Monthly visibility report",
+      "Basic social content (2–4 posts)"
+    ],
+    color: "from-indigo-100/40 to-indigo-50/20",
+    accent: "bg-indigo-400",
+    btn: "bg-[#ede9fe] text-[#6366f1] hover:bg-[#6366f1] hover:text-white"
   },
   {
-    headline: "Smart Patient Management",
-    description: "Calls, follow-ups, and patient communication are managed automatically, reducing manual work.",
-    icon: <Inbox className="w-5 h-5 text-[#0f3d32]" />,
+    id: "growth",
+    name: "Growth Pack",
+    tagline: "For clinics ready to scale patient inflow",
+    priceRange: "₹12,000",
+    features: [
+      "Landing page for digital identity (SEO Optimized)",
+      "Everything in Starter",
+      "Lead capture across channels",
+      "Missed call recovery",
+      "WhatsApp automation (flows + follow-ups)",
+      "Simple CRM view",
+      "Review & reputation management"
+    ],
+    color: "from-rose-100/40 to-rose-50/20",
+    accent: "bg-rose-400",
+    btn: "bg-[#ffe4e6] text-[#e11d48] hover:bg-[#e11d48] hover:text-white"
   },
   {
-    headline: "Focus on Patient Care",
-    description: "Your team can stop chasing leads and spend more time treating patients.",
-    icon: <Magnet className="w-5 h-5 text-[#0f3d32]" />,
-  },
-  {
-    headline: "Authority-Based Growth",
-    description: "We create trusted medical content that builds your clinic’s reputation and attracts the right patients.",
-    icon: <Bot className="w-5 h-5 text-[#0f3d32]" />,
-  },
-  {
-    headline: "Flexible Growth Models",
-    description: "Choose between revenue-sharing or fixed-cost plans based on how you want to scale your clinic.",
-    icon: <TrendingUp className="w-5 h-5 text-[#0f3d32]" />,
-  },
-  {
-    headline: "True Growth Partnership",
-    description: "We work as part of your team, focused on long-term success—not just as a service provider.",
-    icon: <BarChart3 className="w-5 h-5 text-[#0f3d32]" />,
+    id: "orchestration",
+    name: "Orchestration Pack",
+    tagline: "End-to-end patient journey management",
+    priceRange: "₹40,000",
+    features: [
+      "Landing page for digital identity (Premium Suite)",
+      "Multi-channel orchestration",
+      "Call center scripts + knowledge base",
+      "Journey design (pre + post OPD)",
+      "Reporting dashboards",
+      "Multi-location support (add-on)",
+      "Specialist clinical workflows"
+    ],
+    color: "from-sky-100/40 to-sky-50/20",
+    accent: "bg-sky-400",
+    btn: "bg-[#e0f2fe] text-[#0ea5e9] hover:bg-[#0ea5e9] hover:text-white"
   }
 ];
 
+const PricingCard = ({ tier }: { tier: typeof pricingTiers[0] }) => {
+  const [isExpandedMobile, setIsExpandedMobile] = useState(false);
 
+  return (
+    <div className="w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full h-[480px] group rounded-[24px] overflow-hidden shadow-lg border border-[#0f3d32]/10 bg-white"
+      >
+        {/* Front State: Initial Visibility */}
+        <div className="absolute inset-0 z-0 p-8 flex flex-col justify-between bg-white">
+          <div className="space-y-4">
+            <div className={`w-12 h-1.5 rounded-full ${tier.accent} opacity-40 mb-6`} />
+            <h3
+              className="text-3xl font-bold text-[#0f3d32] tracking-tight"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              {tier.name}
+            </h3>
+            <p className="text-[#5b6e68] text-sm font-semibold max-w-[80%] leading-relaxed italic">
+              {tier.tagline}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <span className="text-4xl md:text-5xl font-bold text-[#0f3d32] tracking-tighter">
+                {tier.priceRange}
+              </span>
+              <div className="flex flex-col">
+                <span className="text-[#5b6e68]/40 font-bold leading-none text-xl">|</span>
+                <span className="text-slate-400 font-bold text-xs uppercase tracking-widest leading-none mt-1">Month</span>
+              </div>
+            </div>
+            <p className="text-[11px] text-[#5b6e68]/60 font-bold uppercase tracking-widest mt-4 flex items-center gap-2">
+              <span className="w-4 h-px bg-[#5b6e68]/20" /> Hover to explore features
+            </p>
+          </div>
+        </div>
+
+        {/* Revealed State: Features Panel */}
+        <motion.div
+          className={`absolute inset-0 z-20 bg-white flex flex-col p-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isExpandedMobile ? 'translate-y-0' : 'translate-y-full md:group-hover:translate-y-0'}`}
+        >
+          {/* Mobile Close Button */}
+          <button
+            className="md:hidden absolute top-6 right-6 p-2 bg-[#CFE8E5] rounded-full text-[#0f3d32] z-30 shadow-sm border border-[#0f3d32]/10"
+            onClick={() => setIsExpandedMobile(false)}
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <div className="relative z-10 flex flex-col flex-1 mt-4 md:mt-0 overflow-hidden">
+            <h4 className="text-sm font-bold text-[#0f3d32] uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+              <span className={`w-8 h-px ${tier.accent} opacity-30`} /> Included features
+            </h4>
+
+            <ul className="space-y-5 flex-1 overflow-y-auto custom-scrollbar pr-2 mb-8">
+              {tier.features.map((feature, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <div className="flex items-center justify-center w-5 h-5 rounded-full border border-slate-100 shrink-0 mt-0.5">
+                    <CheckCircle2 className="w-3 h-3 text-[#0f3d32]/20" strokeWidth={3} />
+                  </div>
+                  <span className="text-[14px] text-[#5b6e68] font-bold leading-tight">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <Link 
+              to="/digital-identity" 
+              className="text-center text-[11px] font-bold text-[#0f3d32]/50 hover:text-brand-teal transition-all mb-4 flex items-center justify-center gap-1.5 group/link"
+            >
+              Explore Digital Identity <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" />
+            </Link>
+
+            <button className={`w-full py-4 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 group/btn ${tier.btn}`}>
+              Purchase Plan
+              <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+            </button>
+          </div>
+
+          {/* Decorative Subtle Background */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${tier.color} pointer-events-none`} />
+        </motion.div>
+
+        {/* Mobile Floating '+' Button */}
+        {!isExpandedMobile && (
+          <button
+            onClick={() => setIsExpandedMobile(true)}
+            className="md:hidden absolute bottom-8 right-8 w-12 h-12 bg-[#0f3d32] text-white rounded-full flex items-center justify-center shadow-lg z-10 active:scale-95 transition-transform"
+          >
+            <span className="text-2xl font-light">+</span>
+          </button>
+        )}
+      </motion.div>
+    </div>
+  );
+};
 
 const Offerings = () => {
   return (
-    <section id="offerings" className="pt-0 pb-12 relative overflow-hidden bg-[#CFE8E5]">
+    <section id="offerings" className="py-24 relative overflow-hidden bg-[#CFE8E5]">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#0f3d32]/60 mb-5 bg-[#0f3d32]/5 border border-[#0f3d32]/10 px-4 py-1.5 rounded-full">
-            Offerings
-          </span>
-          <h2
-            className="text-3xl md:text-4xl font-bold mb-12 tracking-tight text-[#0f3d32]"
+        <div className="text-center mb-20">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block text-xs font-semibold tracking-widest uppercase text-[#0f3d32]/60 mb-5 bg-[#0f3d32]/5 border border-[#0f3d32]/10 px-4 py-1.5 rounded-full"
+          >
+            Pricing & Strategy
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold mb-6 text-[#0f3d32] tracking-tight"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Our Offerings
-          </h2>
-        </motion.div>
+            Choose the Perfect Pricing Plan
+          </motion.h2>
+          <p className="text-[#0f3d32]/60 max-w-xl mx-auto font-medium text-sm md:text-base italic">
+            "Your digital identity is your clinical legacy. Professional journey orchestration designed for superior outcomes."
+          </p>
+        </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {offerings.map((offering, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 5 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px" }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
-              whileHover={{
-                scale: 1.02,
-                boxShadow: "0 20px 40px rgba(15, 61, 50, 0.15)",
-                borderColor: "rgba(15, 61, 50, 0.1)",
-              }}
-              className="group flex flex-col gap-5 p-8 rounded-[24px] bg-white border border-[#0f3d32]/5 transition-all duration-200 cursor-default shadow-[0_4px_20px_rgba(15,61,50,0.04)]"
-            >
-              {/* Icon container */}
-              <div
-                className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
-                style={{
-                  background: 'rgba(15, 61, 50, 0.04)',
-                  border: '1px solid rgba(15, 61, 50, 0.08)',
-                }}
-              >
-                {offering.icon}
-              </div>
-
-              {/* Text */}
-              <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-bold text-[#0f3d32] leading-snug tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  {offering.headline}
-                </h3>
-                <p className="text-base text-[#1a3d36] leading-relaxed font-medium opacity-90">
-                  {offering.description}
-                </p>
-              </div>
-
-              {/* Bottom accent line */}
-              <div className="mt-auto h-0.5 w-0 group-hover:w-16 bg-[#0f3d32]/40 transition-all duration-500 ease-out rounded-full" />
-            </motion.div>
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto place-items-center">
+          {pricingTiers.map((tier) => (
+            <PricingCard key={tier.id} tier={tier} />
           ))}
         </div>
+
+        {/* Footer Text */}
+        <div className="mt-20 text-center">
+          <p className="text-[#0f3d32]/60 text-sm font-bold">
+            Not sure which plan fits? <button className="text-[#0f3d32] underline hover:text-[#4ABFB0] transition-colors">Talk to our clinical experts.</button>
+          </p>
+        </div>
+
       </div>
+
+      {/* Background radial glow matching Brands section */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-teal/5 blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 };

@@ -73,8 +73,6 @@ const founders: Founder[] = [
             "Laparoscopic Procedures"
         ],
         languages: ["Telugu", "English", "Hindi"],
-        availableDays: "Mon - Sat",
-        timings: "10:00 AM - 07:00 PM",
         contactInfo: ["+91 70707 60909", "+91 70709 60909", "+91 77799 40909"],
         email: "contact@medcyhospitals.com",
         address: "Medcy Hospitals, Arilova, Visakhapatnam, Andhra Pradesh",
@@ -116,11 +114,9 @@ const founders: Founder[] = [
         ],
         whyConsult: "At Ottobon, Bhanu Prasad brings strategic vision and deep technical expertise to build scalable healthcare and enterprise platforms. His approach combines business-first thinking with robust technology architecture, ensuring impactful, efficient, and future-ready solutions.",
         languages: ["English", "Telugu", "Hindi"],
-        availableDays: "Mon - Fri",
-        timings: "09:00 AM - 06:00 PM",
         contactInfo: ["+91 90000 00000"],
         email: "bhanu@ottobon.com",
-        address: "Hyderabad Center, Telangana, India",
+        address: "Vishakapatnam, Andhra Pradesh, India",
         modalImage: "/.png/profile2.png",
         imagePosition: "center 5%"
     }
@@ -235,16 +231,6 @@ const Founders = () => {
                                     {selectedFounder.subtitle}
                                 </p>
 
-                                <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-2xl mx-auto text-[#0f3d32]/50 text-xs font-bold uppercase tracking-widest px-8">
-                                    <div className="flex items-center gap-2">
-                                        <span>Available Days :</span>
-                                        <span className="text-brand-emerald">{selectedFounder.availableDays || "Mon-Sat"}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span>Timings :</span>
-                                        <span className="text-brand-emerald">{selectedFounder.timings}</span>
-                                    </div>
-                                </div>
                             </div>
 
                             {/* Center-aligned Profile Portrait */}

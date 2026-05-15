@@ -6,6 +6,7 @@ import type { Variants } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, X, CheckCircle2, Loader2 } from "lucide-react";
 import { submitLead } from "../../services/leadService";
+import KeyStats from "../../sections/KeyStats";
 
 import InteractiveBackground from "./InteractiveBackground";
 
@@ -67,12 +68,16 @@ export default function MedcyIvfHero() {
                         className="text-[42px] md:text-[64px] lg:text-[76px] leading-[1.1] md:leading-[1.15] mb-6 text-[#38423f] tracking-tight"
                         style={{ fontFamily: "'Playfair Display', serif", fontWeight: 300 }}
                     >
-                        Smarter Operations for <br className="hidden md:block" /> Modern Clinics.
+                        Your Clinic’s Digital <br className="hidden md:block" /> Growth Partner
                     </motion.h1>
 
                     <motion.p variants={staggerVariants} className="text-[#5b6e68] text-base md:text-lg lg:text-[19px] max-w-[800px] font-normal leading-[1.7] mb-10 tracking-wide text-center">
-                        We streamline your patient journey—from first contact to follow-up—so you can deliver better care while improving operational efficiency.
+                        We take care of marketing, leads, and appointments while you focus on your patients.
                     </motion.p>
+
+                    <motion.div variants={staggerVariants}>
+                        <KeyStats />
+                    </motion.div>
 
                     {/* Primary CTA */}
                     <motion.button

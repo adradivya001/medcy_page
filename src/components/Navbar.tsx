@@ -17,10 +17,13 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = ["Home", "Our Brands", "Challenges", "Offerings", "Why Us", "Founders"];
+  const navLinks = ["Home", "Our Brands", "Challenges", "Offerings", "Digital Identity", "Why Us", "Founders"];
 
   return (
     <>
+      {/* Top mask to hide scrolling text in the gap above the navbar */}
+      <div className="fixed top-0 left-0 right-0 h-[24px] bg-background z-[45] pointer-events-none" />
+
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
