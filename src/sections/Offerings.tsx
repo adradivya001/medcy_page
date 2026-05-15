@@ -199,12 +199,7 @@ const Offerings = () => {
           ))}
         </div>
 
-        {/* Footer Text */}
-        <div className="mt-20 text-center">
-          <p className="text-[#0f3d32]/60 text-sm font-bold">
-            Not sure which plan fits? <button className="text-[#0f3d32] underline hover:text-[#4ABFB0] transition-colors">Talk to our clinical experts.</button>
-          </p>
-        </div>
+
 
       </div>
 
